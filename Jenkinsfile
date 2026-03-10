@@ -1,6 +1,6 @@
 pipeline {
     environment{
-            ENIVRONMENT_CREDENTIALS = credentials('docker')
+            ENVIRONMENT_CREDENTIALS = credentials('docker')
     }
     agent{
         label 'Slave01'
@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('git') {
             steps {
-                git branch: 'main' , url = 'https://github.com/UmangKhandelwal23/PratisePRT2026'
+                git branch: 'main' , url: 'https://github.com/UmangKhandelwal23/PratisePRT2026'
             }
         }
         stage('docker') {
