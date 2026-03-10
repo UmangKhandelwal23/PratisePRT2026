@@ -14,8 +14,8 @@ pipeline {
         }
         stage('docker') {
             steps {
-                sh 'sudo docker build -t umangkhandelwal/practiseprt:v1 /home/ubuntu/jenkins/workspace/FirstJob'
-                sh 'sudo docker login -u ${ENIVRONMENT_CREDENTIALS_usr} -p ${ENIVRONMENT_CREDENTIALS_psw}'
+                sh "sudo docker build -t umangkhandelwal/practiseprt:v1 ${WORKSPACE}"
+                sh "sudo docker login -u ${ENVIRONMENT_CREDENTIALS_USR} -p ${ENVIRONMENT_CREDENTIALS_PSW}"
                 sh 'sudo docker push umangkhandelwal/practiseprt:v1'
             }
         }
