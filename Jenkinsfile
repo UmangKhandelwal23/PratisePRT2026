@@ -1,6 +1,6 @@
 pipeline {
     environment{
-            ENVIRONMENT_CREDENTIALS = credentials('docker')
+                    DOCKERHUB_CREDENTIALS=credentials('docker')
     }
     agent{
         label 'Slave01'
@@ -14,8 +14,8 @@ pipeline {
         }
         stage('docker') {
             steps {
-                sh "sudo docker build -t umangkhandelwal/practiseprt:v1 ${WORKSPACE}"
-                sh "sudo docker login -u ${ENVIRONMENT_CREDENTIALS_USR} -p ${ENVIRONMENT_CREDENTIALS_PSW}"
+                sh 'sudo docker build -t umangkhandelwal/practiseprt:v1 ${WORKSPACE}'
+                sh 'sudo docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
                 sh 'sudo docker push umangkhandelwal/practiseprt:v1'
             }
         }
